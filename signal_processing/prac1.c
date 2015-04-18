@@ -7,7 +7,7 @@
 
 static void sig_handlr(int signo) {
 
-	printf ("sig handlr : ");
+	printf ("sighandlr> ");
 
 	if(signo == SIGUSR1)
 		printf("Saving Batt\n");
@@ -18,11 +18,14 @@ static void sig_handlr(int signo) {
 	else if(signo == SIGINT)
 		printf("received SIGINT\n");
 
-	else if(signo == SIGSTOP)
-		printf("received SIGSTOP\n");
-
 	else if(signo == SIGQUIT)
-		printf("received SIGQUIT\n");
+        printf("received SIGQUIT\n");
+    
+    else if(signo == SIGSTOP) 
+        printf("received SIGSTOP\n");
+    
+    else if(signo == SIGKILL)
+        printf("received SIGKILL\n");
 
 	else 
 		printf("received sig : %d\n", signo);
@@ -62,11 +65,14 @@ int main(void) {
 	if(signal(SIGINT, sig_handlr) == SIG_ERR)
 		printf("can't catch SIGINT\n");
 
-	if(signal(SIGSTOP, sig_handlr) == SIG_ERR)
-		printf("can't catch SIGSTOP\n");
-
 	if(signal(SIGQUIT, sig_handlr) == SIG_ERR)
-		printf("can't catch SIGQUIT\n");
+        printf("can't catch SIGQUIT\n");
+    
+    if(signal(SIGSTOP, sig_handlr) == SIG_ERR)
+        printf("can't catch SIGSTOP\n");
+    
+    if(signal(SIGKILL, sig_handlr) == SIG_ERR)
+        printf("can't catch SIGKILL\n");
 
 	while(1) pause();
 	

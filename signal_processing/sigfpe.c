@@ -4,7 +4,8 @@ static void sig_fpe(int signo) {
 	pid_t  pid;
 	int status;
 	pid = wait(&status);
-	printf("Div. by 0 Err !!!\n");
+    printf("sighndlr> Div. by 0 Err !!!\n");
+    sleep(1);
 	//exit(0);
 }
 
@@ -13,10 +14,8 @@ int main(void) {
 	int i;
 	signal(SIGFPE, sig_fpe);
 	
-	while(1){
-		i = i/0;
-		sleep(1);
-	}
+    i = i/0;
+	
 	
 	return 0;
 }
