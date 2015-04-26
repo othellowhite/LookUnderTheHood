@@ -1,0 +1,8 @@
+
+$ make
+$ sudo insmod example.ko
+$ sudo lsmod
+$ cat /var/log/messages
+$ sudo rmmod
+$ sudo lsmod
+$ cat /var/log/message
